@@ -1,0 +1,15 @@
+<h2 class="text-center text-primary">Edit data for {{customer?.name}}</h2>
+<hr>
+<div class="row" *ngIf="customer">
+<form #editForm="ngForm" id="editForm" (ngSubmit)="updateCustomer()">
+    <h4 class="mt-2">Name</h4>
+    <textarea class="form-control" [(ngModel)]="customer.name" name="name" rows="6"></textarea>
+    <textarea [hidden]="true" class="form-control" [(ngModel)]="customer.customerNumber" name="customerNumber" rows="6"></textarea>
+    <br>
+    <br>
+    <div class="text-center">
+        <button [disabled]="!editForm.dirty" class="btn btn-success me-2" type="submit">Save changes</button>
+        <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>
+</div>

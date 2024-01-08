@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Customer } from 'src/app/_models/customer';
 import { CustomerService } from 'src/app/_services/customer.service';
 
@@ -10,7 +11,7 @@ import { CustomerService } from 'src/app/_services/customer.service';
 export class CustomerListComponent implements OnInit{
    customers: Customer[] = [];
 
-   constructor(private customerService: CustomerService){}
+   constructor(private customerService: CustomerService, private toastr: ToastrService){}
 
    ngOnInit(): void{
       this.loadCustomers();
@@ -20,5 +21,15 @@ export class CustomerListComponent implements OnInit{
       this.customerService.getCustomers().subscribe({
         next: customers => this.customers = customers
       })
+   }
+
+   deleteCustomer(customerNumber:string){
+      // console.log(customerNumber + ' customerNumber');
+      this.customerService.deleteCustomer(customerNumber).subscribe({
+         next: _ => {
+            this.toastr.success('Customer deleted successfully');
+            this.loadCustomers();
+       }
+       });
    }
 }

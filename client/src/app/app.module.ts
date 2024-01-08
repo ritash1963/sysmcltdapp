@@ -11,6 +11,9 @@ import { CustomerListComponent } from './customers/customer-list/customer-list.c
 import { CustomerDetailComponent } from './customers/customer-detail/customer-detail.component';
 import { NewcustomerComponent } from './newcustomer/newcustomer.component';
 import { ToastrModule } from 'ngx-toastr';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CustomerEditComponent } from './customers/customer-edit/customer-edit.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 @NgModule({
   declarations: [
@@ -19,15 +22,21 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     CustomerListComponent,
     CustomerDetailComponent,
-    NewcustomerComponent
+    NewcustomerComponent,
+    CustomerEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-right'
+    }),
+    NgxSpinnerModule.forRoot({
+      type: 'line-scale-party'
     })
   ],
   providers: [],

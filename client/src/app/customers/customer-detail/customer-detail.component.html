@@ -1,1 +1,34 @@
-<h1>{{customer?.name}}</h1>
+<h2 class="text-center text-primary">Informarion about {{customer?.name}}</h2>
+<hr>
+<h3 class="text-left text-primary">Addresses</h3>
+<div class="container" >
+    <div class="row">
+     <table>
+       <tr>
+         <th style="width: 40%"><b>City</b></th>
+         <th style="width: 60%"><b>Street</b></th>
+       </tr>
+       <tr *ngFor="let address of addresses">
+         <td>{{address.city}}</td>
+         <td>{{address.street}}</td>
+       </tr>
+     </table>
+   </div>
+ </div>
+ <h3 class="text-left text-primary">Contacts</h3>
+ <div class="container" >
+    <div class="row">
+     <table>
+       <tr>
+         <th style="width: 40%"><b>Contact name</b></th>
+         <th style="width: 30%"><b>Contact office number</b></th>
+         <th style="width: 30%"><b>Contact email</b></th>
+       </tr>
+       <tr *ngFor="let contact of contacts">
+         <td>{{contact.fullName}}</td>
+         <td>{{contact.officeNumber}}</td>
+         <td>{{contact.email}}</td>
+       </tr>
+     </table>
+   </div>
+ </div>

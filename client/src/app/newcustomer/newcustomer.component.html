@@ -1,1 +1,83 @@
-<p>newcustomer works!</p>
+<h2 class="text-center text-primary">Insert new customer</h2>
+<hr>
+<form [formGroup]="newCustomerForm" (ngSubmit)="newCustomerForm.valid && insertCustomer()" autocomplete="off">
+  <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('name')?.errors && newCustomerForm.get('name')?.touched"
+       class="form-control"
+       formControlName="name"
+       placeholder="Customer name"
+    >
+    <div class="invalid-feedback">Please enter a customer name</div>
+  </div>
+  
+  <div class="mb-3">
+    <input type="text"
+    [class.is-invalid]="newCustomerForm.get('customerNumber')?.errors && newCustomerForm.get('customerNumber')?.touched"
+       class="form-control"
+       formControlName="customerNumber"
+       placeholder="Customer number"
+    >
+    <div class="invalid-feedback" *ngIf="newCustomerForm.get('customerNumber')?.hasError('required')">Please enter a customer number</div>
+    <div class="invalid-feedback" *ngIf="newCustomerForm.get('customerNumber')?.hasError('minlength')">A customer number is too short</div>
+    <div class="invalid-feedback" *ngIf="newCustomerForm.get('customerNumber')?.hasError('maxlength')">A customer number is too long</div>
+   </div>
+
+   <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('city')?.errors && newCustomerForm.get('city')?.touched"
+       class="form-control"
+       formControlName="city"
+       placeholder="Customer city"
+    >
+    <div class="invalid-feedback">Please enter a customer city</div>
+  </div>
+
+  <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('street')?.errors && newCustomerForm.get('street')?.touched"
+       class="form-control"
+       formControlName="street"
+       placeholder="Customer street"
+    >
+    <div class="invalid-feedback">Please enter a customer street</div>
+  </div>
+
+  <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('fullName')?.errors && newCustomerForm.get('fullName')?.touched"
+       class="form-control"
+       formControlName="fullName"
+       placeholder="Contact full name"
+    >
+    <div class="invalid-feedback">Please enter a contact full name</div>
+  </div>
+
+  <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('officeNumber')?.errors && newCustomerForm.get('officeNumber')?.touched"
+       class="form-control"
+       formControlName="officeNumber"
+       placeholder="Contact office number"
+    >
+    <div class="invalid-feedback">Please enter a contact office number</div>
+  </div>
+
+  <div class="mb-3">
+    <input type="text"
+       [class.is-invalid]="newCustomerForm.get('email')?.errors && newCustomerForm.get('email')?.touched"
+       class="form-control"
+       formControlName="email"
+       placeholder="Contact email"
+    >
+    <div class="invalid-feedback">Please enter a valid contact email</div>
+  </div>
+    
+    <div class="text-center">
+        <button [disabled]="!newCustomerForm.valid" class="btn btn-success me-2" type="submit">Save</button>
+        <button class="btn btn-default" type="button" (click)="cancel()">Cancel</button>
+    </div>
+</form>
+
+<!--<p>Form value: {{newCustomerForm.value | json}}</p>-->
+<!--<p>Form status: {{newCustomerForm.status | json}}</p>-->
